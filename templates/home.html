@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Home</h4>
+{% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}</p>
+{% else %}
+    <p>You are not logged in</p>
+{% endif%}
+
+{% for todo in todos %}
+<div>
+    <a href="{% url 'detail' todo.id %}">{{ todo.title }}"></a>
+</div>
+{% endfor %}
+
+{% endblock %}
